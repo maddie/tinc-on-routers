@@ -30,5 +30,5 @@ Each file in these two directories will be read. They can be organized in
 different files names, so that you can trace which IP maps to which domain.
 Lines start with `#` will be skipped.
 
-Directories under these two directories *will not* be read, so are the
+Directories under these two directories **will not** be read, so are the
 files in those directories.
