@@ -12,6 +12,10 @@ read -r -p "Enter your local address [192.168.4.2]: " LOCAL_ADDR
 [ -z "$LOCAL_ADDR" ] && echo "No input. Defaulting to '192.168.4.2'." && LOCAL_ADDR=192.168.4.2
 echo
 
+read -r -p "Enter remote subnet [192.168.4.0/24]: " REMOTE_SUBNET
+[ -z "$LOCAL_ADDR" ] && echo "No input. Defaulting to '192.168.4.0/24'." && REMOTE_SUBNET=192.168.4.0/24
+echo
+
 read -r -p "Log file [/opt/var/log/tincd.log]: " LOG_FILE
 [ -z "$LOG_FILE" ] && echo "No input. Defaulting to '/opt/var/log/tincd.log'." && LOG_FILE=/opt/var/log/tincd.log
 echo
@@ -28,6 +32,7 @@ echo "Configuration summary:"
 echo "Local name: $CLIENT_NAME"
 echo "Remote name: $SERVER_NAME"
 echo "Local address: $LOCAL_ADDR"
+echo "Remote subnet: $REMOTE_SUBNET"
 echo "Log file: $LOG_FILE"
 echo "Config path: $CONF_DIR"
 echo "LAN Subnet: $LAN_SUBNET"
@@ -47,6 +52,7 @@ sed -i s\#CONF_DIR_PATH\#$CONF_DIR\# env
 sed -i s\#_LAN_SUBNET_\#$LAN_SUBNET\# env
 
 sed -i s\#CONF_DIR_PATH\#$CONF_DIR\# tinc-up
+sed -i s\#REMOTE_SUBNET\#$REMOTE_SUBNET\# tinc-up
 sed -i s\#CONF_DIR_PATH\#$CONF_DIR\# tinc-down
 
 sed -i s\#CONF_DIR_PATH\#$CONF_DIR\# custom_route.sh

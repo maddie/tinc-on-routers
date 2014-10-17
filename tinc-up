@@ -16,7 +16,7 @@ ip addr add $GATEWAY/32 dev $INTERFACE
 
 # Add remote gateway route
 echo "$(ts): Adding route for remote gateway..." >> $LOGFILE
-ip route add 192.168.4.0/24 via $GATEWAY dev $INTERFACE
+ip route add $REMOTE_SUBNET via $GATEWAY dev $INTERFACE
 
 # Add iptables rules
 echo "$(ts): Adding iptables rules for packet forwarding..." >> $LOGFILE
