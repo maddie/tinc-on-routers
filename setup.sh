@@ -33,6 +33,8 @@ echo "Config path: $CONF_DIR"
 echo "LAN Subnet: $LAN_SUBNET"
 echo
 
+read -r -p "Press any key to continue, otherwise hit Ctrl+C to abort."
+
 echo "Applying configurations..."
 cp hosts/template hosts/$CLIENT_NAME
 sed -i s\#CLIENT_ADDRESS\#$LOCAL_ADDR\# hosts/$CLIENT_NAME
