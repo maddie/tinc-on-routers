@@ -18,7 +18,7 @@ needed for other scripts.
 quickly hacked script so don't expect it to work well in some other
 cases (like running it the second time).
 
-For `tinc.conf`, `tinc-up`, `tinc-down` and the folder `hosts`, please refer to [tinc's website](http://www.tinc-vpn.org/docs/).
+For `tinc.conf`, `tinc-up`, `tinc-down` and the directory `hosts`, please refer to [tinc's website](http://www.tinc-vpn.org/docs/).
 
 `custom_route.sh` is used in `tinc-up` to set up the custom routes
 defiend in `custom_host` and `custom_net`.
@@ -26,6 +26,9 @@ defiend in `custom_host` and `custom_net`.
 `custom_host` is for adding address like `173.194.117.137`. `custom_net`
 is for adding subnets like `173.194.117.0/24`.
 
-Each file in these two folders will be read. They can be organized in
+Each file in these two directories will be read. They can be organized in
 different files names, so that you can trace which IP maps to which domain.
 Lines start with `#` will be skipped.
+
+Directories under these two directories *will not* be read, so are the
+files in those directories.
