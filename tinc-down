@@ -1,0 +1,11 @@
+#!/bin/sh
+WORKDIR=CONF_DIR_PATH
+
+source $WORKDIR/env
+source $WORKDIR/functions
+
+echo "$(ts): Bringing down interface '$INTERFACE'..." >> $LOGFILE
+ip link set $INTERFACE down
+
+# Remove iptables rules
+update_iptables del $LAN_SUBNET $INTERFACE

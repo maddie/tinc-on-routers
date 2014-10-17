@@ -1,0 +1,27 @@
+#!/bin/sh
+WORKDIR=CONF_DIR_PATH
+
+source $WORKDIR/env
+source $WORKDIR/functions
+
+REMOTE_NAME=$(grep ConnectTo tinc.conf | awk '{print $3}')
+
+echo "$(ts): Local identity is: $NAME" >> $LOGFILE
+echo "$(ts): This tinc sessions connects to: $REMOTE_NAME" >> $LOGFILE
+
+echo "$(ts): Bring up interface '$INTERFACE'..." >> $LOGFILE
+ip link set $INTERFACE up
+echo "$(ts): Adding address $GATEWAY to $INTERFACE..." >> $LOGFILE
+ip addr add $GATEWAY/32 dev $INTERFACE
+
+# Add remote gateway route
+echo "$(ts): Adding route for remote gateway..." >> $LOGFILE
+ip route add 192.168.4.0/24 via $GATEWAY dev $INTERFACE
+
+# Add iptables rules
+echo "$(ts): Adding iptables rules for packet forwarding..." >> $LOGFILE
+update_iptables add $LAN_SUBNET $INTERFACE
+
+# Load custom routes
+echo "$(ts): Going to load custom routing table now." >> $LOGFILE
+/opt/etc/tinc/custom_route.sh $INTERFACE

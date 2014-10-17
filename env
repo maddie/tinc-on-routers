@@ -1,0 +1,20 @@
+# Logging
+LOGFILE=LOG_FILE_PATH
+
+# Your tinc config path
+CONFDIR=CONF_DIR_PATH
+
+# Your LAN subnet. Currently only one subnet is supported.
+# Multiple subnet support might be added in the future if there's any request..
+LAN_SUBNET=_LAN_SUBNET_
+
+
+
+
+##############################################
+# Do not change anything below this line!!!! #
+##############################################
+HOSTDIR=$CONFDIR/custom_host
+NETDIR=$CONFDIR/custom_net
+
+GATEWAY=$(grep -E '^Subnet' $CONFDIR/hosts/$(grep -E '^Name' $CONFDIR/tinc.conf | awk '{print $3}') | awk '{print $3}')

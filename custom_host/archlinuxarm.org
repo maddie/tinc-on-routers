@@ -1,0 +1,2 @@
+#tw.mirror.archlinuxarm.org
+#163.13.240.201

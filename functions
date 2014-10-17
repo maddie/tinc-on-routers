@@ -1,0 +1,27 @@
+#!/bin/sh
+# Unless you know what you're doing,
+# please do not alter anything in this file!
+
+ts()
+{
+  date +"%Y-%m-%d %H:%M:%S"
+}
+
+update_iptables()
+{
+  case $1 in
+    add)
+      ACTION="-A"
+      ;;
+    del)
+      ACTION="-D"
+      ;;
+  esac
+
+  LAN_SUBNET=$2
+  INTERFACE=$3
+
+  iptables $ACTION FORWARD -s $LAN_SUBNET -j ACCEPT
+  iptables $ACTION FORWARD -d $LAN_SUBNET -j ACCEPT
+  iptables -t nat $ACTION POSTROUTING -s $LAN_SUBNET -o $INTERFACE -j MASQUERADE
+}
