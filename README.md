@@ -9,6 +9,8 @@ translated into English)
 
 http://blog.emzee.be/replace-openvpn-with-tinc-tomato-openwrt-ddwrt-bypassing-gfw/
 
+---
+
 Simple explanations on the files:
 
 `env` and `functions` are some common variables and functions that are
@@ -21,7 +23,7 @@ cases (like running it the second time).
 For `tinc.conf`, `tinc-up`, `tinc-down` and the directory `hosts`, please refer to [tinc's website](http://www.tinc-vpn.org/docs/).
 
 `custom_route.sh` is used in `tinc-up` to set up the custom routes
-defiend in `custom_host` and `custom_net`.
+defined in `custom_host` and `custom_net`.
 
 `custom_host` is for adding address like `173.194.117.137`. `custom_net`
 is for adding subnets like `173.194.117.0/24`.
