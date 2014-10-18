@@ -21,7 +21,3 @@ ip route add $REMOTE_SUBNET via $GATEWAY dev $INTERFACE
 # Add iptables rules
 echo "$(ts): Adding iptables rules for packet forwarding..." >> $LOGFILE
 update_iptables add $LAN_SUBNET $INTERFACE
-
-# Load custom routes
-echo "$(ts): Going to load custom routing table now." >> $LOGFILE
-/opt/etc/tinc/custom_route.sh $INTERFACE
