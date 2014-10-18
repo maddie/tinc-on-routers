@@ -8,7 +8,7 @@ INTERFACE=$1
 
 echo "$(ts): Begin custom route script." >> $LOGFILE
 
-for HOSTFILE in $(find $HOSTDIR/ -type f); do
+for HOSTFILE in $(/usr/bin/find $HOSTDIR/ -type f); do
   echo "$(ts): Loading hosts from '$HOSTFILE'..." >> $LOGFILE
   for HOST in $(cat "$HOSTFILE" | grep -vE '^#'); do
     ip route add $HOST via $GATEWAY dev $INTERFACE >> $LOGFILE 2>&1
@@ -20,7 +20,7 @@ for HOSTFILE in $(find $HOSTDIR/ -type f); do
 done
 echo "$(ts): Finished loading hosts." >> $LOGFILE
 
-for NETFILE in $(find $NETDIR/ -type f); do
+for NETFILE in $(/usr/bin/find $NETDIR/ -type f); do
   echo "$(ts): Loading subnets from '$NETFILE'..." >> $LOGFILE
   for NET in $(cat "$NETFILE" | grep -vE '^#'); do
     ip route add $NET via $GATEWAY dev $INTERFACE >> $LOGFILE 2>&1
