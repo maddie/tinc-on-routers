@@ -16,8 +16,9 @@ for HOSTFILE in $(find $HOSTDIR/ -type f); do
       echo "$(ts): Adding host '$HOST' from '$HOSTFILE' failed." >> $LOGFILE
     fi
   done
-  echo "$(ts): Finished loading hosts from '$HOSTFILE'." >> $LOGFILE
+  #echo "$(ts): Finished loading hosts from '$HOSTFILE'." >> $LOGFILE
 done
+echo "$(ts): Finished loading hosts." >> $LOGFILE
 
 for NETFILE in $(find $NETDIR/ -type f); do
   echo "$(ts): Loading subnets from '$NETFILE'..." >> $LOGFILE
@@ -27,7 +28,8 @@ for NETFILE in $(find $NETDIR/ -type f); do
       echo "$(ts): Adding subnet '$NET' from '$NETFILE' failed." >> $LOGFILE
     fi
   done
-  echo "$(ts): Finished loading subnets from '$NETFILE'." >> $LOGFILE
+  #echo "$(ts): Finished loading subnets from '$NETFILE'." >> $LOGFILE
 done
+echo "$(ts): Finished loading subnets." >> $LOGFILE
 
 echo "$(ts): End of custom route script." >> $LOGFILE
