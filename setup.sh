@@ -42,9 +42,7 @@ read -r -p "Press any key to continue, otherwise hit Ctrl+C to abort."
 
 echo "Applying configurations..."
 cp hosts/template hosts/$CLIENT_NAME
-cp hosts/template-up hosts/$CLIENT_NAME-up
 sed -i s\#CLIENT_ADDRESS\#$LOCAL_ADDR\# hosts/$CLIENT_NAME
-sed -i s\#CONF_DIR_PATH\#$CONF_DIR\# hosts/$CLIENT_NAME-up
 
 sed -i s\#CLIENT_NAME\#$CLIENT_NAME\# tinc.conf
 sed -i s\#SERVER_NAME\#$SERVER_NAME\# tinc.conf

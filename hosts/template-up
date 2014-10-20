@@ -1,9 +1,0 @@
-#!/bin/sh
-WORKDIR=CONF_DIR_PATH
-
-source $WORKDIR/env
-source $WORKDIR/functions
-
-# Load custom routes
-echo "$(ts): Going to load custom routing table now." >> $LOGFILE
-CONF_DIR_PATH/custom_route.sh $INTERFACE
